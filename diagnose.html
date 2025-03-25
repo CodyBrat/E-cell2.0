@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Cell Website Diagnostic</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      color: #0066cc;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .button-group {
+      margin: 20px 0;
+    }
+    button {
+      background-color: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+      margin-bottom: 10px;
+    }
+    .results {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      margin-top: 20px;
+      white-space: pre-wrap;
+      font-family: monospace;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>E-Cell Website Diagnostic Tool</h1>
+    <p>Use this tool to diagnose visibility issues with the E-Cell website.</p>
+    
+    <div class="button-group">
+      <button onclick="checkCSS()">Check CSS</button>
+      <button onclick="checkJS()">Check JavaScript</button>
+      <button onclick="checkDOM()">Check DOM Structure</button>
+      <button onclick="checkVisibility()">Check Element Visibility</button>
+      <button onclick="fixVisibility()">Apply Visibility Fixes</button>
+    </div>
+    
+    <div class="results" id="results">Results will appear here...</div>
+  </div>
+  
+  <script>
+    function log(message) {
+      const results = document.getElementById('results');
+      results.textContent += message + '\n';
+      results.scrollTop = results.scrollHeight;
+    }
+    
+    function clearLog() {
+      document.getElementById('results').textContent = '';
+    }
+    
+    function checkCSS() {
+      clearLog();
+      log('Checking CSS...');
+      
+      // Check if stylesheets are loaded
+      const stylesheets = document.styleSheets;
+      log(`Found ${stylesheets.length} stylesheets`);
+      
+      for (let i = 0; i < stylesheets.length; i++) {
+        try {
+          const sheet = stylesheets[i];
+          log(`Stylesheet ${i+1}: ${sheet.href || 'inline'}`);
+          
+          // Try to access rules to check if the stylesheet is accessible
+          const rules = sheet.cssRules || sheet.rules;
+          log(`  Rules: ${rules ? rules.length : 'Not accessible (CORS)'}`);
+        } catch (e) {
+          log(`  Error accessing stylesheet ${i+1}: ${e.message}`);
+        }
+      }
+    }
+    
+    function checkJS() {
+      clearLog();
+      log('Checking JavaScript...');
+      
+      // Check if script.js is loaded
+      const scripts = document.scripts;
+      log(`Found ${scripts.length} scripts`);
+      
+      let scriptJsFound = false;
+      for (let i = 0; i < scripts.length; i++) {
+        const script = scripts[i];
+        log(`Script ${i+1}: ${script.src || 'inline'}`);
+        
+        if (script.src && script.src.includes('script.js')) {
+          scriptJsFound = true;
+        }
+      }
+      
+      log(`script.js found: ${scriptJsFound}`);
+      
+      // Check for JavaScript errors
+      log('\nChecking for JavaScript errors...');
+      const originalConsoleError = console.error;
+      console.error = function() {
+        log(`Error: ${Array.from(arguments).join(' ')}`);
+        originalConsoleError.apply(console, arguments);
+      };
+      
+      // Restore after 5 seconds
+      setTimeout(() => {
+        console.error = originalConsoleError;
+      }, 5000);
+    }
+    
+    function checkDOM() {
+      clearLog();
+      log('Checking DOM Structure...');
+      
+      // Check key elements
+      const keyElements = [
+        'body', 
+        '#page', 
+        '#vision', 
+        '#header', 
+        '.navbar', 
+        '.main-title', 
+        '.subtitle-container',
+        '.grid-background',
+        '.orbs'
+      ];
+      
+      keyElements.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        log(`${selector}: ${elements.length} elements found`);
+      });
+    }
+    
+    function checkVisibility() {
+      clearLog();
+      log('Checking Element Visibility...');
+      
+      const keyElements = [
+        'body', 
+        '#page', 
+        '#vision', 
+        '#header', 
+        '.navbar', 
+        '.main-title', 
+        '.subtitle-container'
+      ];
+      
+      keyElements.forEach(selector => {
+        const element = document.querySelector(selector);
+        if (element) {
+          const styles = window.getComputedStyle(element);
+          log(`${selector}:`);
+          log(`  display: ${styles.display}`);
+          log(`  visibility: ${styles.visibility}`);
+          log(`  opacity: ${styles.opacity}`);
+          log(`  z-index: ${styles.zIndex}`);
+          log(`  position: ${styles.position}`);
+        } else {
+          log(`${selector}: Element not found`);
+        }
+      });
+    }
+    
+    function fixVisibility() {
+      clearLog();
+      log('Applying visibility fixes...');
+      
+      // Force body to be visible
+      document.body.style.opacity = '1';
+      document.body.style.visibility = 'visible';
+      log('Fixed body visibility');
+      
+      // Force page to be visible
+      const page = document.getElementById('page');
+      if (page) {
+        page.style.opacity = '1';
+        page.style.visibility = 'visible';
+        log('Fixed page visibility');
+      }
+      
+      // Force all sections to be visible
+      const sections = document.querySelectorAll('section');
+      sections.forEach((section, index) => {
+        section.style.opacity = '1';
+        section.style.visibility = 'visible';
+        section.style.display = 'block';
+      });
+      log(`Fixed visibility for ${sections.length} sections`);
+      
+      // Force all reveal-text elements to be active
+      const revealElements = document.querySelectorAll('.reveal-text');
+      revealElements.forEach(element => {
+        element.classList.add('active');
+      });
+      log(`Activated ${revealElements.length} reveal-text elements`);
+      
+      // Force all highlight-text elements to be active
+      const highlightElements = document.querySelectorAll('.highlight-text');
+      highlightElements.forEach(element => {
+        element.classList.add('active');
+      });
+      log(`Activated ${highlightElements.length} highlight-text elements`);
+      
+      log('All visibility fixes applied. Please check the main page now.');
+    }
+  </script>
+</body>
+</html> 

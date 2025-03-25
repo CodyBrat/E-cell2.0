@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shark's Sphere | Simple Version</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .navbar-logo img {
+      height: 40px;
+    }
+    
+    .nav-list {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .nav-item {
+      color: #fff;
+      text-decoration: none;
+      padding: 0.5rem 1rem;
+      margin: 0 0.5rem;
+    }
+    
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.7;
+      margin-bottom: 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background-color: transparent;
+      color: #64ffda;
+      border: 2px solid #64ffda;
+      padding: 0.75rem 1.5rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="navbar-logo">
+        <a href="#vision">
+          <img src="images/logo.png" alt="E-Cell NST Logo">
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="#vision" class="nav-item">Home</a></li>
+          <li><a href="#about" class="nav-item">Vision</a></li>
+          <li><a href="#features" class="nav-item">Features</a></li>
+          <li><a href="#testimonials" class="nav-item">Testimonials</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="vision">
+    <h1>Shark's Sphere</h1>
+    <p class="subtitle">From Vision to Venture - Transforming Ideas into Successful Businesses</p>
+    <a href="#about" class="btn">Learn More</a>
+  </section>
+  
+  <section id="about">
+    <h1>Our Vision</h1>
+    <p class="subtitle">
+      The Entrepreneurship Cell (E-Cell) at Newton School of Technology fosters innovation, creativity,
+      and entrepreneurial thinking. We provide a platform for aspiring entrepreneurs to develop ideas, gain
+      industry insights, and connect with mentors and investors.
+    </p>
+  </section>
+  
+  <section id="features">
+    <h1>What Makes Us Different?</h1>
+    <p class="subtitle">
+      At our platform, we empower innovators to turn their ideas into successful ventures. Whether you're an aspiring entrepreneur or a seasoned professional, our ecosystem is designed to fuel innovation and drive success.
+    </p>
+  </section>
+  
+  <section id="testimonials">
+    <h1>Testimonials</h1>
+    <p class="subtitle">
+      Hear what our community has to say about their experience with Shark's Sphere.
+    </p>
+  </section>
+
+  <script>
+    // Simple script to check if elements are visible
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Page loaded');
+      
+      // Check visibility of sections
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        const rect = section.getBoundingClientRect();
+        console.log(`Section ${section.id}: visible=${rect.top < window.innerHeight && rect.bottom > 0}`);
+      });
+    });
+  </script>
+</body>
+</html> 

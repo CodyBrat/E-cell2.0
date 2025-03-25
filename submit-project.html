@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Submission</title>
+    <link rel="stylesheet" href="submit-project.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="info-section">
+            <h2>Project Submission</h2>
+            <p>Share your innovative ideas and projects with us. We're excited to see what you've been working on!</p>
+            <ul class="features">
+                <li>Easy and secure submission process</li>
+                <li>Support for various file formats</li>
+                <li>Real-time validation and feedback</li>
+                <li>Track your submission status</li>
+            </ul>
+        </div>
+        <div class="form-section">
+            <form id="projectForm">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" placeholder="Enter your full name" required>
+                </div>
+                <div class="form-group">
+                    <label for="adypu">ADYPU Email ID</label>
+                    <input type="email" id="adypu" placeholder="your.email@adypu.edu.in" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" placeholder="Enter your contact number" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Project Description</label>
+                    <textarea id="description" placeholder="Tell us about your project..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Project File</label>
+                    <div class="file-upload" onclick="document.getElementById('file').click()">
+                        <span>Choose a File to Upload</span>
+                        <input type="file" id="file" accept=".pdf" required>
+                    </div>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <span>Submit Project</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Add loading state to button on form submit
+        document.getElementById('projectForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const button = this.querySelector('.submit-btn');
+            button.classList.add('loading');
+            button.innerHTML = '';
+            
+            // Simulate form submission (replace with actual submission)
+            setTimeout(() => {
+                button.classList.remove('loading');
+                button.innerHTML = '<span>Submit Project</span>';
+            }, 2000);
+        });
+
+        // Add hover effect to file upload area
+        const fileUpload = document.querySelector('.file-upload');
+        fileUpload.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            fileUpload.style.transform = 'translateY(-2px)';
+        });
+
+        fileUpload.addEventListener('dragleave', () => {
+            fileUpload.style.transform = 'translateY(0)';
+        });
+
+        fileUpload.addEventListener('drop', (e) => {
+            e.preventDefault();
+            fileUpload.style.transform = 'translateY(0)';
+        });
+    </script>
+</body>
+</html>
