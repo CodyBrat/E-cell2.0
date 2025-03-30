@@ -1,507 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shark's Sphere | E-Cell NST</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <!-- Inline critical CSS to ensure basic visibility -->
-  <style>
-    body {
-      background-color: #000000;
-      color: #ffffff;
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      opacity: 1;
-      visibility: visible;
-    }
-    #fallback-content {
-      display: none;
-      text-align: center;
-      padding: 50px 20px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    #page {
-      opacity: 1;
-      visibility: visible;
-    }
-    #vision {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 20px;
-    }
-    .main-title {
-      font-size: 4rem;
-      margin: 0;
-    }
-    .subtitle {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-      opacity: 0.7;
-    }
-  </style>
-<link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
-<body style="opacity: 1; visibility: visible;">
-  <!-- Cursor glow -->
-  <div class="cursor-glow"></div>
+<body>
+    <header class="headder">
+        <nav class="main-nav">
+            <ul>
+                <li><a href="catalog.html">Dashboard</a></li>
+                <li><a href="about.html">Ongoing Project</a></li>
+                <li><a href="donate.html">Host Projects</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <!-- Fallback content in case main content doesn't load -->
-  <div id="fallback-content">
-    <h1>Shark's Sphere | E-Cell NST</h1>
-    <p>From Vision to Venture - Transforming Ideas into Successful Businesses</p>
-    <p>If you're seeing this message, there might be an issue loading the main content.</p>
-    <button onclick="window.location.reload()">Reload Page</button>
-  </div>
-  
-  <!-- Floating Navbar -->
-  <header id="header">
-    <div class="navbar">
-      <div class="navbar-logo">
-        <a href="#vision">
-          <img src="images/logo.png" alt="E-Cell NST Logo">
-        </a>
-      </div>
-      <nav class="navbar-menu">
-        <ul class="nav-list">
-          <li><a href="#vision" class="nav-item active">Home</a></li>
-          <li><a href="#about" class="nav-item">Vision</a></li>
-          <li><a href="#key-features" class="nav-item">Features</a></li>
-          <li><a href="#testimonials" class="nav-item">Testimonials</a></li>
-          <li><a href="#project-submission" class="nav-item shark-btn">Shark's Sphere</a></li>
-        </ul>
-      </nav>
-      <div class="navbar-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="join-btn" onclick="window.location.href='login_registration.html'">Join Now <i class="fas fa-plus"></i></div>
-    </div>
-</header>
-
-  <div id="page">
-    <section id="vision">
-      <div class="grid-background"></div>
-      <div class="accent-lines">
-        <div class="accent-line"></div>
-        <div class="accent-line"></div>
-        <div class="accent-line"></div>
-        <div class="accent-line"></div>
-      </div>
-      <div class="orbs">
-        <div class="orb"></div>
-        <div class="orb"></div>
-      </div>
-      <span class="pre-title reveal-text">NST PRESENTS</span>
-      <h1 class="glitch main-title" data-text="Shark's Sphere">Shark's Sphere</h1>
-      <div class="subtitle-container">
-        <span class="subtitle reveal-text">From Vision to Venture</span>
-        <span class="subtitle reveal-text" style="animation-delay: 0.5s;">Transforming Ideas into Successful Businesses</span>
-      </div>
-      
-      <div class="scroll-indicator">
-        <div class="mouse"></div>
-        <span>SCROLL</span>
-      </div>
-    </section>
+    <div class=""></div>
     
-    <section id="about">
-      <div class="section-grid"></div>
-      <div class="section-orbs">
-        <div class="section-orb"></div>
-        <div class="section-orb"></div>
-      </div>
-      <div class="container">
-        <h2>Our Vision <span class="vision-badge">SaaS Platform</span></h2>
-        
-        <div class="vision-container">
-          <div class="vision-intro reveal-text">
-            <p>The Entrepreneurship Cell (E-Cell) at Newton School of Technology is building the next generation of <span class="highlight">startup infrastructure</span>. Our cloud-based platform seamlessly connects founders, investors, and talent in one unified ecosystem.</p>
-          </div>
-          
-          <div class="vision-features">
-            <div class="vision-feature reveal-text">
-              <div class="feature-icon">
-                <i class="fas fa-cloud"></i>
-              </div>
-              <div class="feature-content">
-                <h3>Cloud-First Platform</h3>
-                <p>Scale your venture with our cloud infrastructure designed for rapid iteration and growth.</p>
-              </div>
-            </div>
-            
-            <div class="vision-feature reveal-text">
-              <div class="feature-icon">
-                <i class="fas fa-puzzle-piece"></i>
-              </div>
-              <div class="feature-content">
-                <h3>Modular Solutions</h3>
-                <p>Choose from a suite of tools and resources tailored to your startup's unique needs.</p>
-              </div>
-            </div>
-            
-            <div class="vision-feature reveal-text">
-              <div class="feature-icon">
-                <i class="fas fa-users-cog"></i>
-              </div>
-              <div class="feature-content">
-                <h3>Community-Driven</h3>
-                <p>Leverage our network of mentors, investors, and fellow entrepreneurs to accelerate your journey.</p>
-              </div>
-            </div>
-            
-            <div class="vision-feature reveal-text">
-              <div class="feature-icon">
-                <i class="fas fa-chart-bar"></i>
-              </div>
-              <div class="feature-content">
-                <h3>Data-Powered Insights</h3>
-                <p>Make informed decisions with analytics and market intelligence built into our platform.</p>
-              </div>
-            </div>
-          </div>
-          
-          <div class="vision-cta reveal-text">
-            <p>Join thousands of innovators who are building the future on our platform.</p>
-            <button class="vision-btn" onclick="window.location.href='login_registration.html'">Join Now<i class="fas fa-arrow-right"></i></button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="key-features">
-      <div class="section-grid"></div>
-      <div class="section-orbs">
-        <div class="section-orb"></div>
-        <div class="section-orb"></div>
-      </div>
-      <div class="container">
-        <h2>What Makes Us Different? <span class="saas-badge">Enterprise SaaS</span></h2>
-        <div class="summary">
-            <p>At our platform, we empower innovators to turn their ideas into successful ventures. Whether you're an aspiring entrepreneur or a seasoned professional, our ecosystem is designed to fuel innovation and drive success.</p>
-        </div>
-    
-        <div class="saas-features">
-          <div class="saas-feature-main">
-            <div class="saas-feature-content">
-              <div class="saas-badge-container">
-                <span class="saas-feature-tag">MAIN FEATURE</span>
-              </div>
-              <h3>Post Your Startup Idea</h3>
-              <p>Have a game-changing idea? Share it with a community of like-minded innovators, potential co-founders, and early adopters. Get instant feedback, validate your concept, and build momentum from day one.</p>
-              <div class="saas-feature-benefits">
-                <div class="saas-benefit"><i class="fas fa-check-circle"></i> Reach Potential Co-founders</div>
-                <div class="saas-benefit"><i class="fas fa-check-circle"></i> Receive Expert Feedback</div>
-                <div class="saas-benefit"><i class="fas fa-check-circle"></i> Connect With Investors</div>
-              </div>
-              <div class="saas-feature-cta">
-                <button class="saas-feature-btn" onclick="window.location.href='submit-project.html'">Post Your Idea <i class="fas fa-arrow-right"></i></button>
-              </div>
-            </div>
-            <div class="saas-feature-image">
-              <div class="chart-container">
-                <div class="chart-header">
-                  <div class="chart-title">India's Startup Ecosystem</div>
-                  <div class="chart-metrics">
-                    <div class="metric"><span class="value">+15%</span> <span class="label">YoY Growth</span></div>
-                    <div class="metric"><span class="value">117K+</span> <span class="label">Startups</span></div>
-                  </div>
-                </div>
-                <div class="stock-chart">
-                  <div class="chart-line"></div>
-                  <div class="chart-bars">
-                    <div class="chart-bar" style="height: 30%;"></div>
-                    <div class="chart-bar" style="height: 40%;"></div>
-                    <div class="chart-bar" style="height: 60%;"></div>
-                    <div class="chart-bar" style="height: 85%;"></div>
-                    <div class="chart-bar" style="height: 95%;"></div>
-                  </div>
-                  <div class="data-point data-point-1">3rd Largest Ecosystem Globally</div>
-                </div>
-                <div class="chart-labels">
-                  <div class="chart-label">2019</div>
-                  <div class="chart-label">2020</div>
-                  <div class="chart-label">2021</div>
-                  <div class="chart-label">2022</div>
-                  <div class="chart-label">2023</div>
-                </div>
-              </div>
-              <div class="glow-effect"></div>
-            </div>
-          </div>
-          
-          <div class="saas-features-grid">
-            <div class="saas-feature">
-              <div class="saas-feature-icon">
-                <i class="fas fa-handshake"></i>
-                <span class="feature-number">01</span>
-              </div>
-              <div class="saas-feature-badge">COMMUNITY</div>
-              <h4>Collaborate & Apply</h4>
-              <p>Discover exciting projects that match your skills and passion. Whether you're a developer, designer, marketer, or strategist, find opportunities to contribute and grow.</p>
-              <div class="feature-chart">
-                <div class="mini-chart network-chart">
-                  <div class="node node-1"></div>
-                  <div class="node node-2"></div>
-                  <div class="node node-3"></div>
-                  <div class="node node-4"></div>
-                  <div class="node node-5"></div>
-                  <div class="connector c1-2"></div>
-                  <div class="connector c1-3"></div>
-                  <div class="connector c2-4"></div>
-                  <div class="connector c3-4"></div>
-                  <div class="connector c4-5"></div>
-                  <div class="stats-overlay">31 States with Startup Policies</div>
-                </div>
-                <div class="chart-caption">Startup Hub Distribution</div>
-              </div>
-            </div>
-    
-            <div class="saas-feature">
-              <div class="saas-feature-icon">
-                <i class="fas fa-chart-line"></i>
-                <span class="feature-number">02</span>
-              </div>
-              <div class="saas-feature-badge">EDUCATION</div>
-              <h4>Learn & Grow</h4>
-              <p>Gain access to exclusive mentorship from industry leaders, successful entrepreneurs, and subject-matter experts. Participate in hands-on workshops and networking events.</p>
-              <div class="feature-chart">
-                <div class="mini-chart line-chart">
-                  <svg viewBox="0 0 100 30">
-                    <path d="M0,25 L20,22 L40,18 L60,12 L80,5 L100,2" fill="none" stroke="var(--accent)" stroke-width="1.5"></path>
-                    <path d="M0,25 L20,22 L40,18 L60,12 L80,5 L100,2 L100,30 L0,30 Z" fill="url(#lineGradient)" opacity="0.2"></path>
-                    <defs>
-                      <linearGradient id="lineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" stop-color="var(--accent)" />
-                        <stop offset="100%" stop-color="transparent" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                  <div class="line-chart-stats">12.42L+ Direct Jobs</div>
-                </div>
-                <div class="chart-caption">Job Creation (2019-2023)</div>
-              </div>
-            </div>
-    
-            <div class="saas-feature">
-              <div class="saas-feature-icon">
-                <i class="fas fa-coins"></i>
-                <span class="feature-number">03</span>
-              </div>
-              <div class="saas-feature-badge">FUNDING</div>
-              <h4>Funding & Support</h4>
-              <p>Turn your vision into reality with access to potential investors, venture capitalists, and angel funders. Get expert guidance on fundraising strategies and financial planning.</p>
-              <div class="feature-chart">
-                <div class="mini-chart funding-chart">
-                  <div class="funding-stage">
-                    <div class="funding-bar" style="height: 35%;">
-                      <span class="funding-amount">₹1Cr</span>
-                    </div>
-                    <div class="stage-label">Fund Size</div>
-                  </div>
-                  <div class="funding-stage">
-                    <div class="funding-bar" style="height: 100%;">
-                      <span class="funding-amount">₹10L</span>
-                    </div>
-                    <div class="stage-label">Max Raise</div>
-                  </div>
-                  <div class="funding-stage">
-                    <div class="funding-bar" style="height: 60%;">
-                      <span class="funding-amount">MVP</span>
-                    </div>
-                    <div class="stage-label">Phase 2</div>
-                  </div>
-                  <div class="funding-stage">
-                    <div class="funding-bar" style="height: 80%;">
-                      <span class="funding-amount">Pitch</span>
-                    </div>
-                    <div class="stage-label">Phase 3</div>
-                  </div>
-                </div>
-                <div class="chart-caption">StartX Seed Funding Program</div>
-              </div>
-            </div>
-            
-            <!-- Adding fourth feature -->
-            <div class="saas-feature">
-              <div class="saas-feature-icon">
-                <i class="fas fa-rocket"></i>
-                <span class="feature-number">04</span>
-              </div>
-              <div class="saas-feature-badge">ECOSYSTEM</div>
-              <h4>Startup Growth</h4>
-              <p>Join India's vibrant ecosystem of registered startups that are driving innovation and economic growth across various sectors and regions.</p>
-              <div class="feature-chart" style="height: 130px; overflow: visible;">
-                <div class="mini-chart donut-chart" style="height: 70px; margin-bottom: 25px;">
-                  <svg viewBox="0 0 36 36" style="width: 70%; height: 70%; margin: 0 auto;">
-                    <circle cx="18" cy="18" r="15.91549430918954" fill="transparent" stroke="#3d3d3d" stroke-width="1"></circle>
-                    <circle cx="18" cy="18" r="15.91549430918954" fill="transparent" stroke="var(--accent)" stroke-width="3" stroke-dasharray="85 15" stroke-dashoffset="25"></circle>
-                    <g class="donut-chart-text">
-                      <text x="18" y="18.5" text-anchor="middle" fill="var(--accent)" font-size="7" font-weight="bold">85%</text>
-                    </g>
-                  </svg>
-                  <div class="stats-overlay">98,000+ Recognized Startups</div>
-                </div>
-                <div class="chart-caption" style="margin-top: 25px; font-weight: 600; color: white; position: relative; z-index: 50; text-shadow: 0 2px 4px rgba(0,0,0,0.8);">Registered Startups Growth</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="project-submission">
-      <div class="section-grid"></div>
-      <div class="section-orbs">
-        <div class="section-orb"></div>
-      </div>
-      <div class="container">
-        <h2 class="reveal-text">Turn Ideas Into Reality</h2>
-        <p>
-          At Shark Sphere, we believe every innovative thought deserves a chance to shine.
-          Our exclusive project-uploading feature lets you share your startup ideas with the
-          community, connect with passionate collaborators, and turn your vision into a thriving venture.
-        </p>
-        <h3 class="glitch" data-text="Ready to build the future?">Ready to build the future?</h3>
-        <div class="submit-your-project">
-          <a href="submit-project.html" class="btn">Submit Your Project</a>
-        </div>
-      </div>
-    </section>
-
-    <section id="testimonials">
-      <div class="section-grid"></div>
-      <div class="section-orbs">
-        <div class="section-orb"></div>
-        <div class="section-orb"></div>
-      </div>
-      <div class="container">
-        <h2>Testimonials</h2>
-        <div class="gallery">
-            <div class="card">
-              <div class="image-box">
-              <img src="https://rishihood.edu.in/wp-content/uploads/2002/04/Siddharth-Maheshwari.png" 
-                   alt="Siddharth Maheshwari" 
-                   loading="lazy" 
-                   decoding="async" 
-                   width="300" 
-                   height="300">
-              </div>
-              <div class="content">
-              <h3>Siddharth Maheshwari</h3>
-              <span class="title">Co-Founder, NST</span>
-              <p>"Innovation distinguishes between a leader and a follower. At NST, we're creating leaders who will shape the future of entrepreneurship."</p>
-              </div>
-          </div>
-            <div class="card">
-              <div class="image-box">
-              <img src="https://rishihood.edu.in/wp-content/uploads/2002/04/Nishant-Chandra.png" 
-                   alt="Nishant Chandra" 
-                   loading="lazy" 
-                   decoding="async" 
-                   width="300" 
-                   height="300">
-              </div>
-              <div class="content">
-              <h3>Nishant Chandra</h3>
-              <span class="title">Co-Founder, NST</span>
-              <p>"Entrepreneurship is about turning ideas into action. We provide the platform for that transformation, empowering students to create impactful ventures."</p>
-              </div>
-          </div>
-          </div>
-    </div>
-    </section>
-</div>
-
-<footer>
-    <div id="footer">
-      <div class="footer-section">
-        <h3 class="reveal-text">E-CELL, NST PUNE</h3>
-        <img src="images/logo.png" alt="E-Cell Logo" width="100">
-      </div>
-      <div class="footer-section">
-        <h3 class="reveal-text">Connect With Us</h3>
-        <div class="social-links">
-          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-        </div>
-        </div>
-    </div>
-    <p class="copyright">With love from <a id="redirect" href="index.html" class="animated-underline">E-CELL, NST Pune</a> © 2024</p>
-</footer>
-
-  <script>
-    // Simple visibility check
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        // Check if main content is visible
-        var mainContent = document.getElementById('vision');
-        var fallbackContent = document.getElementById('fallback-content');
-        
-        if (!mainContent || getComputedStyle(mainContent).display === 'none' || 
-            getComputedStyle(mainContent).visibility === 'hidden' || 
-            getComputedStyle(mainContent).opacity === '0') {
-          // Show fallback content if main content is not visible
-          if (fallbackContent) {
-            fallbackContent.style.display = 'block';
-          }
-        }
-      }, 2000); // Check after 2 seconds
-    });
-  </script>
-  <script src="script.js"></script>
-  
-  <script>
-    // Ensure all animations are properly initialized after everything is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      // Add active class to all reveal text elements
-      document.querySelectorAll('.reveal-text').forEach(function(el) {
-        setTimeout(function() {
-          el.classList.add('active');
-        }, 300);
-      });
-      
-      // Make sure page is visible
-      document.body.style.visibility = 'visible';
-      document.body.style.opacity = '1';
-      
-      // Ensure sections are visible
-      const sections = document.querySelectorAll('section');
-      sections.forEach(function(section) {
-        section.style.visibility = 'visible';
-        section.style.opacity = '1';
-      });
-    });
-    
-    // If browser supports it, use Intersection Observer to trigger animations
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        rootMargin: '0px',
-        threshold: 0.1
-      });
-      
-      // Observe all reveal elements
-      document.querySelectorAll('.reveal-text, .feature, .card').forEach(el => {
-        observer.observe(el);
-      });
-    }
-  </script>
 </body>
 </html>
 
+
+<div class="sc-af336999-2 iAeMMK"><div class="sc-af336999-3 ggxYRb"><div class="sc-ce11adfa-0 llWnFS"><div class="sc-ce11adfa-2 btNBRk"><div class="sc-ce11adfa-1 dKoRfT">Classroom Quiz</div><div color="#D22D48" class="sc-ce11adfa-4 hYHRwX">Live</div></div></div><div class="sc-af336999-33 dkZCcM"><div class="sc-f9e3e3ee-2 hhmRMB"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q1. </div><div class="sc-f9e3e3ee-4 eCjPkk">If two variables have a correlation coefficient of 1, what can be said about their covariance?</div><div class="sc-f9e3e3ee-1 eFNMbJ">A</div></div></div><div class="sc-f9e3e3ee-2 hhmRMB"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q2. </div><div class="sc-f9e3e3ee-4 eCjPkk"><p>The table below shows the monthly revenue (X) and monthly refunds (Y) for a retail store over the past 6 months:<br>
+    <img src="https://d3dyfaf3iutrxo.cloudfront.net/ckeditor_uploads/2025/01/21/6bf9cc671e194589abab4fdbf0aa3ad1.png" style="width: 600px; height: 199px;"></p>
+    
+    <p>What is the covariance between X and Y?</p></div><div class="sc-f9e3e3ee-1 eFNMbJ">B</div></div></div><div class="sc-f9e3e3ee-2 hhmRMB"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q3. </div><div class="sc-f9e3e3ee-4 eCjPkk">In Interstellar, Dr. Brand calculates the correlation between gravitational force (X) and time dilation (Y) as -0.85. The standard deviation of gravitational force is 12, and the standard deviation of time dilation is 8. What is the covariance between the two variables?</div><div class="sc-f9e3e3ee-1 eFNMbJ">-</div></div></div><div class="sc-f9e3e3ee-2 hhmRMB"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q4. </div><div class="sc-f9e3e3ee-4 eCjPkk">In The Matrix, Neo is analyzing the relationship between the number of agents (X) and the number of simulated worlds he experiences (Y). He computes the covariance as 0 and the correlation coefficient as 0. What can we infer about the relationship between X and Y?</div><div class="sc-f9e3e3ee-1 eFNMbJ">-</div></div></div><div class="sc-f9e3e3ee-2 hhmRMB"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q5. </div><div class="sc-f9e3e3ee-4 eCjPkk"><h3><strong>Which of the following statements about Spearman's Rank Correlation is true?</strong></h3></div><div class="sc-f9e3e3ee-1 eFNMbJ">-</div></div></div><div class="sc-f9e3e3ee-2 hhmRMB"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q6. </div><div class="sc-f9e3e3ee-4 eCjPkk"><p>The heights (&lt;inlineMath&gt;X&lt;/inlineMath&gt;) and weights (&lt;inlineMath&gt;Y&lt;/inlineMath&gt;) of a group of people are recorded. The following summary statistics are provided:</p>
+    
+    <ul>
+        <li>&nbsp;&lt;inlineMath&gt;\sum{(X - \bar{X})(Y - \bar{Y})} = 480&lt;/inlineMath&gt;</li>
+        <li>Number of people in the group: &lt;inlineMath&gt;n = 20&lt;/inlineMath&gt;</li>
+    </ul>
+    
+    <p>What is the covariance between heights and weights?</p>
+    
+    <p>&nbsp;</p></div><div class="sc-f9e3e3ee-1 eFNMbJ">-</div></div></div><div class="sc-f9e3e3ee-2 hhmRMB"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q7. </div><div class="sc-f9e3e3ee-4 eCjPkk">A professor ranks 5 students based on their performance in two subjects: Mathematics (X) and Physics (Y). The rankings are:
+    <table border="1" cellpadding="1" cellspacing="1" style="width:350px;">
+        <tbody>
+            <tr>
+                <td style="text-align: center;">Student</td>
+                <td style="text-align: center;">Rank on Mathematics (X)</td>
+                <td style="text-align: center;">Rank in Physics(Y)</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">A</td>
+                <td style="text-align: center;">1</td>
+                <td style="text-align: center;">2</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">B</td>
+                <td style="text-align: center;">2</td>
+                <td style="text-align: center;">3</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">C</td>
+                <td style="text-align: center;">3</td>
+                <td style="text-align: center;">4</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">D</td>
+                <td style="text-align: center;">4</td>
+                <td style="text-align: center;">1</td>
+            </tr>
+            <tr>
+                <td style="text-align: center;">E</td>
+                <td style="text-align: center;">5</td>
+                <td style="text-align: center;">5</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    <h3>What is the Spearman Rank correlation coefficient ?</h3>
+    &nbsp;
+    
+    <h3>&nbsp;</h3></div><div class="sc-f9e3e3ee-1 eFNMbJ">-</div></div></div><div class="sc-f9e3e3ee-2 hhmRMB"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q8. </div><div class="sc-f9e3e3ee-4 eCjPkk">In a raffle, there are 3 different prizes: a car, a vacation, and a laptop. If a person can win at most one prize, what is the sample space of possible outcomes, and what is the probability of winning the car?</div><div class="sc-f9e3e3ee-1 eFNMbJ">-</div></div></div><div class="sc-f9e3e3ee-2 hhmRMB"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q9. </div><div class="sc-f9e3e3ee-4 eCjPkk"><p>Three six- sided dice are rolled.<br>
+    What is the probability that the total sum of the numbers rolled is exactly 10?</p></div><div class="sc-f9e3e3ee-1 eFNMbJ">-</div></div></div><div class="sc-f9e3e3ee-2 hhmRMB"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q10. </div><div class="sc-f9e3e3ee-4 eCjPkk"><p>In the process of training a machine learning model, the engineer is experimenting with the arrangement of different features in a dataset. These features represent various hyperparameters (like learning rate, batch size, optimizer) that need to be arranged in a geometrical grid. Each configuration is assigned to a point on a 3x3 grid, and the engineer wants to test how frequently a specific configuration appears at certain positions.</p>
+    
+    <ul>
+        <li>There are <strong>9 configurations(out of which only one is correct configuration)</strong> to place in a 3x3 grid, and each configuration must be assigned to a unique position in the grid.</li>
+        <li>The <strong>correct configuration</strong> is placed at a randomly chosen position in the grid.</li>
+        <li>The engineer is interested in determining the probability that the correct configuration ends up at a <strong>corner position</strong> of the grid (i.e., one of the 4 corners).</li>
+    </ul>
+    
+    <p>What is the probability that the correct configuration is placed in one of the corner positions of the grid?</p></div><div class="sc-f9e3e3ee-1 eFNMbJ">-</div></div></div><div class="sc-f9e3e3ee-2 EyLpo"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q11. </div><div class="sc-f9e3e3ee-4 eCjPkk"><p>The following data shows the number of hours worked (X) and the corresponding sales amount in dollars (Y) for 4 employees:</p>
+    
+    <ul>
+        <li>X: [8, 9, 10, 11]</li>
+        <li>Y: [50, 55, 60, 65]</li>
+    </ul>
+    
+    <p>Calculate the covariance between hours worked and sales.</p></div><div class="sc-f9e3e3ee-1 eFNMbJ">-</div></div></div><div class="sc-f9e3e3ee-2 hhmRMB"><div class="sc-f9e3e3ee-3 eYTKIW"><div> Q12. </div><div class="sc-f9e3e3ee-4 eCjPkk">The table below shows the monthly revenue (X) and monthly refunds (Y) for a retail store over the past 6 months:<br>
+    <img src="https://d3dyfaf3iutrxo.cloudfront.net/ckeditor_uploads/2025/01/21/57b43d00e9184621a55b56a7c03d9cf5.png" style="width: 600px; height: 150px;"><br>
+    Using the data provided, calculate the <strong>correlation coefficient</strong> (r) between revenue (X) and refunds (Y).</div><div class="sc-f9e3e3ee-1 eFNMbJ">-</div></div></div></div></div><div class="sc-af336999-4 efvuqF"><div class="sc-af336999-39 dYsIdU"><div class="sc-af336999-5 eJiCti">Question 11</div><div class="sc-af336999-6 eqkUXw"><span><p>The following data shows the number of hours worked (X) and the corresponding sales amount in dollars (Y) for 4 employees:</p>
+    
+    <ul>
+        <li>X: [8, 9, 10, 11]</li>
+        <li>Y: [50, 55, 60, 65]</li>
+    </ul>
+    
+    <p>Calculate the covariance between hours worked and sales.</p></span></div><div class="sc-af336999-8 cmRyqX"><div color="" class="sc-67e9c95b-3 ciTpcT"><div class="sc-8bf16788-0 exEpDv">A</div><div class="sc-af336999-15 cPYzPb"><span>6.25</span></div></div><div color="" class="sc-67e9c95b-3 ciTpcT"><div class="sc-8bf16788-0 exEpDv">B</div><div class="sc-af336999-15 cPYzPb"><span>5.25</span></div></div><div color="" class="sc-67e9c95b-3 ciTpcT"><div class="sc-8bf16788-0 exEpDv">C</div><div class="sc-af336999-15 cPYzPb"><span>7.25</span></div></div><div color="" class="sc-67e9c95b-3 ciTpcT"><div class="sc-8bf16788-0 exEpDv">D</div><div class="sc-af336999-15 cPYzPb"><span>8.25</span></div></div></div></div></div></div>
