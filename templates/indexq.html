@@ -428,18 +428,37 @@
     <div id="footer">
       <div class="footer-section">
         <h3 class="reveal-text">E-CELL, NST PUNE</h3>
-        <img src="{{ url_for('static',filename = 'images/logo.png') }}" alt="E-Cell NST Logo">
+        <img src="{{ url_for('static',filename = 'images/logo.png') }}" alt="E-Cell NST Logo" class="footer-logo">
+        <p class="footer-tagline">From Vision to Venture</p>
+      </div>
+      <div class="footer-section">
+        <h3 class="reveal-text">Quick Links</h3>
+        <ul class="footer-links">
+          <li><a href="#vision">Home</a></li>
+          <li><a href="#about">Vision</a></li>
+          <li><a href="#key-features">Features</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+        </ul>
       </div>
       <div class="footer-section">
         <h3 class="reveal-text">Connect With Us</h3>
         <div class="social-links">
-          <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-          <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://linkedin.com" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://twitter.com" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="mailto:contact@ecellnst.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
-        </div>
+        <p class="contact-email">contact@ecellnst.com</p>
+      </div>
     </div>
-    <p class="copyright">With love from <a id="redirect" href="index.html" class="animated-underline">E-CELL, NST Pune</a> © 2024</p>
+    <div class="copyright-container">
+      <p class="copyright">© 2025 E-CELL, NST Pune. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <span class="footer-separator">|</span>
+        <a href="#">Terms of Service</a>
+      </div>
+    </div>
 </footer>
 
   <script>
