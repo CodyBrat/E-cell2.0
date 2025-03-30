@@ -61,10 +61,6 @@ def admin_required(f):
 def index():
     return render_template('indexq.html')
 
-# @app.route('/test_index')
-# def index_test():
-#     return render_template('indexq.html')
-
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -79,7 +75,7 @@ def register():
 
     return render_template('register.html')
 
-@app.route('/add_admin', methods = ['POST'])
+@app.route('/add_admin', methods=['POST'])
 def add_admin():
     if request.method == 'POST':
         name = request.form['name']
