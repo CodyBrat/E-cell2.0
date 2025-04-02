@@ -3,11 +3,42 @@ from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 from datetime import datetime
 from functools import wraps
+import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 app.secret_key = 'secret_key'
+
+# Configure the app to use a memory-based SQLite database for Vercel
+if os.environ.get('VERCEL_REGION') or os.environ.get('VERCEL'):
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+    # For demo purposes, create initial admin user when using in-memory DB
+    @app.before_first_request
+    def create_initial_user():
+        with app.app_context():
+            db.create_all()
+            # Check if admin exists
+            admin = User.query.filter_by(email='admin@example.com').first()
+            if not admin:
+                admin_user = User(
+                    name='Admin User',
+                    email='admin@example.com',
+                    password='adminpassword',
+                    is_admin=True
+                )
+                # Add a demo project
+                db.session.add(admin_user)
+                db.session.commit()
+                
+                demo_project = Project(
+                    title='Demo Project',
+                    description='This is a demo project created for testing purposes.',
+                    user_id=admin_user.id,
+                    published=True
+                )
+                db.session.add(demo_project)
+                db.session.commit()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
