@@ -1,0 +1,18 @@
+{
+  "name": "sharks-sphere",
+  "version": "1.0.0",
+  "description": "A platform for connecting entrepreneurs with investors",
+  "main": "app.py",
+  "scripts": {
+    "start": "python app.py",
+    "test": "python -m pytest"
+  },
+  "dependencies": {
+    "glob": "^10.3.10",
+    "uuid": "^9.0.1",
+    "lru-cache": "^10.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+} 

@@ -1,10 +1,10 @@
-from flask import Flask, request, render_template, redirect, session, flash, url_for
+from flask import Flask, request, render_template, redirect, session, flash, url_for, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 from datetime import datetime
 from functools import wraps
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 app.secret_key = 'secret_key'
@@ -199,6 +199,11 @@ def admin_project(project_id):
     flash(f'Project {action}ed successfully!', 'success')
     return redirect(url_for('admin_dashboard'))
 
+@app.route('/static/<path:path>')
+def serve_static(path):
+    return send_from_directory('static', path)
+
 if __name__ == '__main__':
     app.run(port=5500, debug=True)
+
 
