@@ -3,17 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 from datetime import datetime
 from functools import wraps
-import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.secret_key = 'secret_key'
-
-# Configure for Vercel deployment
-if os.environ.get('VERCEL_REGION') or os.environ.get('VERCEL'):
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-
 db = SQLAlchemy(app)
+app.secret_key = 'secret_key'
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -49,38 +43,8 @@ class Application(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     user = db.relationship('User', backref=db.backref('applications', lazy=True))
 
-# Initialize the database
 with app.app_context():
     db.create_all()
-
-# For Vercel: create demo data
-@app.before_first_request
-def create_initial_data():
-    if os.environ.get('VERCEL_REGION') or os.environ.get('VERCEL'):
-        try:
-            # Check if admin exists
-            admin = User.query.filter_by(email='admin@example.com').first()
-            if not admin:
-                admin_user = User(
-                    name='Admin User',
-                    email='admin@example.com',
-                    password='adminpassword',
-                    is_admin=True
-                )
-                db.session.add(admin_user)
-                db.session.commit()
-                
-                # Add a demo project after the admin user is created
-                demo_project = Project(
-                    title='Demo Project',
-                    description='This is a demo project created for testing purposes.',
-                    user_id=admin_user.id,
-                    published=True
-                )
-                db.session.add(demo_project)
-                db.session.commit()
-        except Exception as e:
-            print(f"Error creating initial data: {e}")
 
 def admin_required(f):
     @wraps(f)
