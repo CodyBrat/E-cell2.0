@@ -3,12 +3,19 @@ from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 from datetime import datetime
 from functools import wraps
+import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+
+# Use environment variable for database URL, defaulting to SQLite
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL', 'sqlite:///database.db')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
+    'pool_pre_ping': True,
+    'pool_recycle': 300,
+}
 db = SQLAlchemy(app)
-app.secret_key = 'secret_key'
+app.secret_key = os.getenv('SECRET_KEY', 'default_secret_key')
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -44,8 +51,12 @@ class Application(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     user = db.relationship('User', backref=db.backref('applications', lazy=True))
 
-with app.app_context():
-    db.create_all()
+# Initialize database only if tables don't exist
+def init_db():
+    with app.app_context():
+        db.create_all()
+
+init_db()
 
 def admin_required(f):
     @wraps(f)
