@@ -3,22 +3,11 @@ from flask_sqlalchemy import SQLAlchemy
 import bcrypt
 from datetime import datetime
 from functools import wraps
-import os
 
 app = Flask(__name__, static_folder='static')
-
-# Check for production environment
-if os.environ.get('VERCEL_ENV') == 'production':
-    # For production on Vercel, use PostgreSQL
-    # You'll need to set DATABASE_URL in your Vercel environment variables
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgresql://postgres:password@localhost/ecell')
-else:
-    # For local development, use SQLite
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
-app.secret_key = os.environ.get('SECRET_KEY', 'secret_key')
+app.secret_key = 'secret_key'
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -54,10 +43,8 @@ class Application(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     user = db.relationship('User', backref=db.backref('applications', lazy=True))
 
-# Only create tables in development environment
-if not os.environ.get('VERCEL_ENV') == 'production':
-    with app.app_context():
-        db.create_all()
+with app.app_context():
+    db.create_all()
 
 def admin_required(f):
     @wraps(f)
@@ -77,30 +64,14 @@ def index():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
-        try:
-            name = request.form['name']
-            email = request.form['email']
-            password = request.form['password']
+        name = request.form['name']
+        email = request.form['email']
+        password = request.form['password']
 
-            # Check if user already exists
-            existing_user = User.query.filter_by(email=email).first()
-            if existing_user:
-                flash('Email already registered. Please use a different email or login.', 'error')
-                return render_template('register.html', error='Email already exists')
-
-            new_user = User(name=name, email=email, password=password)
-            db.session.add(new_user)
-            db.session.commit()
-            
-            # Set session after successful registration
-            session['email'] = new_user.email
-            
-            return redirect('/dashboard')
-        except Exception as e:
-            db.session.rollback()
-            app.logger.error(f"Registration error: {str(e)}")
-            flash('An error occurred during registration. Please try again.', 'error')
-            return render_template('register.html', error='Registration failed')
+        new_user = User(name=name, email=email, password=password)
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect('/login')
 
     return render_template('register.html')
 

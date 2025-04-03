@@ -11,8 +11,5 @@
         "src": "/(.*)",
         "dest": "app.py"
       }
-    ],
-    "env": {
-      "VERCEL_ENV": "production"
-    }
+    ]
   }
