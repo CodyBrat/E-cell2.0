@@ -274,272 +274,407 @@
         }
 
         .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            overflow: hidden;
-            margin-bottom: 20px;
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .card:nth-child(odd) {
-            animation-delay: 0.2s;
-        }
-
-        .card:nth-child(even) {
-            animation-delay: 0.4s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-            border-color: var(--accent-secondary);
-        }
-
-        .card-body {
+            background: linear-gradient(145deg, rgba(15, 15, 15, 0.7), rgba(10, 10, 10, 0.9));
+            border-radius: 16px;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            margin-bottom: 30px;
+            transition: all 0.4s ease;
             position: relative;
-            padding: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .card-body::before {
+        .card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 3px;
+            width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, var(--accent), var(--accent-secondary));
-            opacity: 0.8;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 15px rgba(100, 255, 218, 0.1);
+        }
+
+        .card-body {
+            padding: 35px;
+            z-index: 1;
+            position: relative;
         }
 
         .card-title {
-            color: var(--text-primary);
+            font-size: 1.7rem;
             font-weight: 700;
-            margin-bottom: 5px;
-            padding-left: 15px;
-            font-size: 1.25rem;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            line-height: 1.3;
+        }
+
+        .card-title i {
+            color: var(--accent);
+            font-size: 1.3rem;
         }
 
         .card-subtitle {
-            color: var(--accent) !important;
+            color: var(--accent);
+            font-size: 1rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-subtitle i {
             font-size: 0.9rem;
-            padding-left: 15px;
+        }
+
+        .user-avatar {
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 5px;
+            font-size: 12px;
+            color: var(--bg-dark);
+            font-weight: bold;
         }
 
         .card-text {
             color: var(--text-secondary);
-            padding-left: 15px;
-            margin-top: 15px;
-            line-height: 1.6;
-        }
-
-        .btn {
-            border-radius: 10px;
-            font-weight: 600;
-            padding: 12px 20px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-            z-index: 1;
-        }
-
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-        }
-
-        .btn i {
-            margin-right: 8px;
-            font-size: 16px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .btn-sm {
-            padding: 8px 15px;
-            font-size: 0.875rem;
-            height: auto;
-        }
-
-        .btn-primary {
-            background: linear-gradient(90deg, #00bcd4, #64ffda);
-            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
-            color: #0a0a0a;
-        }
-
-        .btn-secondary {
-            background-color: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .btn-success {
-            background: linear-gradient(90deg, #00bcd4, #64ffda);
-            box-shadow: 0 5px 15px rgba(0, 188, 212, 0.3);
-            color: #0a0a0a;
-        }
-
-        .btn-warning {
-            background: linear-gradient(90deg, #ffd700, #ff9800);
-            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.3);
-            color: #0a0a0a;
-        }
-
-        .btn-info {
-            background: linear-gradient(90deg, #64ffda, #00bcd4);
-            box-shadow: 0 5px 15px rgba(100, 255, 218, 0.3);
-            color: #0a0a0a;
-        }
-
-        .btn-danger {
-            background: linear-gradient(90deg, #ff5252, #f44336);
-            box-shadow: 0 5px 15px rgba(244, 67, 54, 0.3);
-            color: var(--text-primary);
-        }
-
-        /* Modal Styling */
-        .modal-content {
-            background-color: var(--bg-dark-secondary);
-            border: 1px solid var(--border);
-            border-radius: 15px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-header {
-            border-bottom: 1px solid var(--border);
-            padding: 15px 20px;
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
-        }
-
-        .modal-title {
-            color: var(--accent);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-        }
-
-        .modal-title i {
-            margin-right: 8px;
-        }
-
-        .modal-body {
-            padding: 20px;
-        }
-
-        .modal-footer {
-            border-top: 1px solid var(--border);
-            padding: 15px 20px;
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
-        }
-
-        .close {
-            color: var(--text-primary);
-            text-shadow: none;
-            opacity: 0.7;
-        }
-
-        .close:hover {
-            color: var(--accent);
-            opacity: 1;
-        }
-
-        #createProjectForm {
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            padding: 25px;
             margin-bottom: 30px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            line-height: 1.8;
+            font-size: 1.05rem;
             position: relative;
-            overflow: hidden;
-            animation: fadeIn 0.8s ease-out forwards;
+            padding-left: 15px;
+            border-left: 2px solid rgba(100, 255, 218, 0.2);
         }
 
-        #createProjectForm h2 {
+        .card-actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .btn-apply {
+            background: linear-gradient(135deg, #64ffda, #00bcd4);
+            color: #000;
+            font-weight: 600;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1rem;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-apply:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2), 0 0 15px rgba(100, 255, 218, 0.15);
+        }
+
+        .project-status {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
             display: flex;
             align-items: center;
+            gap: 8px;
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 0.5s ease-out forwards;
         }
 
-        #createProjectForm h2 i {
-            margin-right: 10px;
+        .status-published {
+            background: rgba(100, 255, 218, 0.12);
             color: var(--accent);
+            border: 1px solid rgba(100, 255, 218, 0.25);
+        }
+        
+        .status-published i {
+            color: #2ecc71;
         }
 
-        #createProjectForm::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100px;
-            background: radial-gradient(circle, rgba(100, 255, 218, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
-            pointer-events: none;
+        .status-draft {
+            background: rgba(255, 214, 102, 0.15);
+            color: #ffb74d;
+            border: 1px solid rgba(255, 214, 102, 0.3);
+        }
+        
+        .status-draft i {
+            color: #ffb74d;
         }
 
         .project-section {
-            margin-top: 40px;
+            margin-top: 50px;
         }
 
-        .project-section h2 {
+        .section-title {
+            color: var(--text-primary);
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 30px;
             display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+        }
+
+        .section-title i {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+
+        .welcome-message {
+            background: rgba(100, 255, 218, 0.05);
+            border-radius: 16px;
+            padding: 25px 30px;
+            margin-bottom: 35px;
+            border: 1px solid var(--border);
+            color: var(--text-secondary);
+            line-height: 1.7;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .welcome-message h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .welcome-message p {
+            font-size: 1.05rem;
+            margin-bottom: 0;
+        }
+        
+        .welcome-message::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(100, 255, 218, 0.1), transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .create-project-section {
+            background: rgba(100, 255, 218, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border: 1px solid var(--border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .create-project-section::before {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(100, 255, 218, 0.1), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .create-project-toggle {
+            display: flex;
+            justify-content: space-between;
             align-items: center;
         }
 
-        .project-section h2 i {
-            margin-right: 10px;
-            color: var(--accent);
+        .form-group {
+            margin-bottom: 25px;
         }
 
-        /* Footer */
-        .footer {
-            background-color: rgba(0, 0, 0, 0.8);
-            border-top: 1px solid var(--border);
-            padding: 15px 0;
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            border-radius: 12px;
+            padding: 15px 18px;
+            width: 100%;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent);
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.15);
+            outline: none;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.3);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 30px;
+            border-radius: 20px;
+            margin: 35px 0;
+            background: linear-gradient(145deg, rgba(10, 10, 10, 0.8), rgba(15, 15, 15, 0.9));
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            border: 1px dashed rgba(100, 255, 218, 0.3);
+        }
+        
+        .empty-state::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.3), transparent);
+        }
+        
+        .empty-state::after {
+            content: '';
             position: absolute;
             bottom: 0;
-            width: 100%;
-            text-align: center;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(100, 255, 218, 0.3), transparent);
         }
 
-        .footer p {
-            margin: 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .footer a {
+        .empty-state-icon {
+            font-size: 64px;
             color: var(--accent);
-            text-decoration: none;
+            margin-bottom: 25px;
+            position: relative;
+            display: inline-block;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        .empty-state-icon::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(100, 255, 218, 0.1);
+            border-radius: 50%;
+            z-index: -1;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -30%);
+            filter: blur(20px);
         }
 
-        .footer a:hover {
-            text-decoration: underline;
+        .empty-state-text {
+            color: var(--text-secondary);
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+        
+        .empty-state-subtext {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto 35px auto;
+            line-height: 1.6;
+        }
+        
+        .empty-state-btn {
+            background: linear-gradient(135deg, #64ffda, #00bcd4);
+            color: #000;
+            font-weight: 600;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .empty-state-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25), 0 0 15px rgba(100, 255, 218, 0.2);
+        }
+        
+        .empty-state-btn i {
+            font-size: 1.2rem;
         }
 
-        /* Responsive */
+        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px;
+            .card-actions {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .project-status {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 15px;
+                display: inline-flex;
+                width: fit-content;
+            }
+            
+            .create-project-toggle {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
             }
         }
     </style>
@@ -585,84 +720,143 @@
             </div>
             
             <div class="welcome-message">
-                Welcome to your projects dashboard, {{ user.name }}! Here you can manage your existing projects or create new ones.
+                <h3><i class="fas fa-lightbulb"></i> Welcome to your projects hub, {{ user.name }}!</h3>
+                <p>Create new projects to find collaborators or manage your existing ones. Publishing a project makes it visible to other users who can apply to join.</p>
             </div>
             
-            <button id="showCreateProjectBtn" class="btn btn-primary mb-4"><i class="fas fa-plus-circle"></i> Create New Project</button>
+            <div class="create-project-section">
+                <div id="createProjectToggle" class="create-project-toggle">
+                    <h3 class="section-title mb-0"><i class="fas fa-plus-circle"></i> Create New Project</h3>
+                    <button id="showCreateProjectBtn" class="btn btn-primary" title="Start creating a new project"><i class="fas fa-edit"></i> Start Creating</button>
+                </div>
 
-            <div id="createProjectForm" style="display: none;">
-                <h2><i class="fas fa-edit"></i> Create a New Project</h2>
-                <form action="{{ url_for('projects_route') }}" method="POST">
-                    <div class="form-group">
-                        <label for="title">Project Title:</label>
-                        <input type="text" class="form-control" id="title" name="title" required placeholder="Enter a catchy title for your project">
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Project Description:</label>
-                        <textarea class="form-control" id="description" name="description" rows="3" required placeholder="Describe your project in detail, including goals, requirements, and any specific skills needed..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-success"><i class="fas fa-check"></i> Add Project</button>
-                    <button type="button" id="cancelCreateProject" class="btn btn-secondary"><i class="fas fa-times"></i> Cancel</button>
-                </form>
+                <div id="createProjectForm" style="display: none;" class="mt-4">
+                    <form action="{{ url_for('projects_route') }}" method="POST">
+                        <div class="form-group">
+                            <label for="title">Project Title</label>
+                            <input type="text" class="form-control" id="title" name="title" required placeholder="Enter a catchy title for your project">
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Project Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="5" required placeholder="Describe your project in detail, including goals, requirements, and any specific skills needed..."></textarea>
+                        </div>
+                        <div class="d-flex gap-3">
+                            <button type="submit" class="btn btn-success" title="Save your new project"><i class="fas fa-check"></i> Create Project</button>
+                            <button type="button" id="cancelCreateProject" class="btn btn-secondary" title="Cancel project creation"><i class="fas fa-times"></i> Cancel</button>
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <div class="project-section">
-                <h2><i class="fas fa-list"></i> All Projects</h2>
-                {% for project in projects %}
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ project.title }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">By {{ project.user_name }}</h6>
-                            <p class="card-text">{{ project.description }}</p>
-                            <div class="mt-3">
-                            {% if project.user_id|string == user._id|string %}
-                                <form action="{{ url_for('projects_route') }}" method="POST" class="d-inline">
-                                    <input type="hidden" name="project_id" value="{{ project._id }}">
-                                    <button type="submit" class="btn btn-sm {% if project.published %}btn-warning{% else %}btn-success{% endif %}">
-                                        {% if project.published %}<i class="fas fa-eye-slash"></i> Unpublish{% else %}<i class="fas fa-globe"></i> Publish{% endif %}
-                                    </button>
-                                </form>
-                            {% elif project.published %}
-                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#applyModal{{ project._id }}">
-                                    <i class="fas fa-paper-plane"></i> Apply
-                                </button>
-                                <!-- Apply Modal -->
-                                <div class="modal fade" id="applyModal{{ project._id }}" tabindex="-1" aria-labelledby="applyModalLabel{{ project._id }}" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="applyModalLabel{{ project._id }}"><i class="fas fa-paper-plane"></i> Apply to {{ project.title }}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form action="{{ url_for('projects_route') }}" method="POST">
-                                                    <input type="hidden" name="apply_project_id" value="{{ project._id }}">
-                                                    <div class="form-group">
-                                                        <label for="application_message">Application Message:</label>
-                                                        <textarea class="form-control" id="application_message" name="application_message" rows="5" required placeholder="Explain why you're interested in this project and what skills you can bring..."></textarea>
-                                                    </div>
-                                                    <div class="mt-3">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Submit Application</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer" style="display: none;">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn btn-primary">Submit Application</button>
-                                            </div>
-                                        </div>
-                                    </div>
+                <h3 class="section-title"><i class="fas fa-folder"></i> Your Projects</h3>
+                
+                {% if projects|selectattr('user_id', 'equalto', user._id|string)|list|length == 0 %}
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-folder-open"></i>
+                    </div>
+                    <div class="empty-state-text">You haven't created any projects yet</div>
+                    <div class="empty-state-subtext">Start creating projects to collaborate with other users. Once published, your projects will be visible to others who can apply to join.</div>
+                </div>
+                {% else %}
+                    {% for project in projects %}
+                        {% if project.user_id|string == user._id|string %}
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="project-status {% if project.published %}status-published{% else %}status-draft{% endif %}">
+                                    {% if project.published %}
+                                    <i class="fas fa-globe"></i> Published
+                                    {% else %}
+                                    <i class="fas fa-file-alt"></i> Draft
+                                    {% endif %}
                                 </div>
-                            {% endif %}
+                                <h5 class="card-title"><i class="fas fa-project-diagram"></i> {{ project.title }}</h5>
+                                <h6 class="card-subtitle mb-2"><i class="fas fa-user"></i> Created by you</h6>
+                                <p class="card-text">{{ project.description }}</p>
+                                <div class="card-actions">
+                                    <form action="{{ url_for('projects_route') }}" method="POST" class="d-inline">
+                                        <input type="hidden" name="project_id" value="{{ project._id }}">
+                                        <button type="submit" class="btn {% if project.published %}btn-warning{% else %}btn-success{% endif %}" title="{% if project.published %}Make your project private{% else %}Make your project visible to others{% endif %}">
+                                            {% if project.published %}<i class="fas fa-eye-slash"></i> Unpublish{% else %}<i class="fas fa-globe"></i> Publish{% endif %}
+                                        </button>
+                                    </form>
+                                
+                                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#applyModal{{ project._id }}" title="View people who applied to your project">
+                                        <i class="fas fa-users"></i> View Applications
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
 
-            <div class="mt-4">
-                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+            <div class="project-section">
+                <h3 class="section-title"><i class="fas fa-search"></i> Other Available Projects</h3>
+                
+                {% if projects|selectattr('user_id', 'ne', user._id|string)|selectattr('published', 'equalto', true)|list|length == 0 %}
+                <div class="empty-state">
+                    <div class="empty-state-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <div class="empty-state-text">No projects available yet</div>
+                    <div class="empty-state-subtext">There are no published projects from other users available at the moment. Check back later or create your own project!</div>
+                    <a href="{{ url_for('dashboard') }}" class="empty-state-btn" title="Return to your dashboard">
+                        <i class="fas fa-arrow-left"></i> Back to Dashboard
+                    </a>
+                </div>
+                {% else %}
+                    {% for project in projects %}
+                        {% if project.user_id|string != user._id|string and project.published %}
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-project-diagram"></i> {{ project.title }}</h5>
+                                <h6 class="card-subtitle mb-2">
+                                    <div class="user-avatar">{{ project.user_name[0] }}</div>
+                                    By {{ project.user_name }}
+                                </h6>
+                                <p class="card-text">{{ project.description }}</p>
+                                <div class="card-actions">
+                                    <button type="button" class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal{{ project._id }}" title="Apply to collaborate on this project">
+                                        <i class="fas fa-paper-plane"></i> Apply to Project
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Apply Modal -->
+                        <div class="modal fade" id="applyModal{{ project._id }}" tabindex="-1" aria-labelledby="applyModalLabel{{ project._id }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="applyModalLabel{{ project._id }}"><i class="fas fa-paper-plane"></i> Apply to {{ project.title }}</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="{{ url_for('projects_route') }}" method="POST">
+                                            <input type="hidden" name="apply_project_id" value="{{ project._id }}">
+                                            <div class="form-group">
+                                                <label for="application_message">Why are you interested in this project?</label>
+                                                <textarea class="form-control" id="application_message" name="application_message" rows="5" required placeholder="Introduce yourself, explain your interest, and highlight the skills you can bring to this project..."></textarea>
+                                            </div>
+                                            <div class="d-flex justify-content-end gap-2 mt-4">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
+                                                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Application</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+            <div class="mt-4 mb-3">
+                <a href="{{ url_for('dashboard') }}" class="btn btn-secondary" title="Return to your dashboard"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
             </div>
         </div>
     </div>
@@ -681,17 +875,31 @@
         document.addEventListener('DOMContentLoaded', function() {
             const showCreateProjectBtn = document.getElementById('showCreateProjectBtn');
             const createProjectForm = document.getElementById('createProjectForm');
+            const createProjectToggle = document.getElementById('createProjectToggle');
             const cancelCreateProject = document.getElementById('cancelCreateProject');
+            const emptyStateCreateBtn = document.getElementById('emptyStateCreateBtn');
 
-            showCreateProjectBtn.addEventListener('click', function() {
+            function showForm() {
                 createProjectForm.style.display = 'block';
-                showCreateProjectBtn.style.display = 'none';
-            });
+                createProjectToggle.style.display = 'none';
+            }
 
-            cancelCreateProject.addEventListener('click', function() {
+            function hideForm() {
                 createProjectForm.style.display = 'none';
-                showCreateProjectBtn.style.display = 'block';
-            });
+                createProjectToggle.style.display = 'flex';
+            }
+
+            if (showCreateProjectBtn) {
+                showCreateProjectBtn.addEventListener('click', showForm);
+            }
+
+            if (cancelCreateProject) {
+                cancelCreateProject.addEventListener('click', hideForm);
+            }
+
+            if (emptyStateCreateBtn) {
+                emptyStateCreateBtn.addEventListener('click', showForm);
+            }
         });
     </script>
 </body>
