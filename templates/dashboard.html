@@ -647,7 +647,7 @@
                         <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('projects') }}">Projects</a>
+                        <a class="nav-link" href="{{ url_for('projects_route') }}">Projects</a>
                     </li>
                     {% if user.is_admin %}
                     <li class="nav-item">
@@ -736,8 +736,8 @@
                                     <i class="fas fa-calendar-alt"></i>
                                 </div>
                                 <div class="profile-item-content">
-                                    <div class="profile-item-label">Member Since</div>
-                                    <div class="profile-item-value">{{ user.id|string|truncate(4, True, '') }} days ago</div>
+                                    <div class="profile-item-label">Account ID</div>
+                                    <div class="profile-item-value">{{ user._id|string|truncate(10, True, '...') }}</div>
                                 </div>
                             </div>
                             
@@ -761,7 +761,7 @@
                     {% endif %}
                     
                     <div class="action-buttons">
-                        <a href="{{ url_for('projects') }}" class="btn btn-primary"><i class="fas fa-project-diagram"></i> View Projects</a>
+                        <a href="{{ url_for('projects_route') }}" class="btn btn-primary"><i class="fas fa-project-diagram"></i> View Projects</a>
                         <a href="{{ url_for('edit_profile') }}" class="btn btn-secondary"><i class="fas fa-user-edit"></i> Edit Profile</a>
                         {% if user.is_admin %}
                             <a href="{{ url_for('admin_dashboard') }}" class="btn btn-info"><i class="fas fa-tools"></i> Admin Panel</a>

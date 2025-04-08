@@ -436,7 +436,7 @@
                         <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('projects') }}">Projects</a>
+                        <a class="nav-link" href="{{ url_for('projects_route') }}">Projects</a>
                     </li>
                     {% if user.is_admin %}
                     <li class="nav-item">
@@ -466,30 +466,11 @@
             <div class="form-card">
                 <form action="{{ url_for('edit_profile') }}" method="POST">
                     <div class="form-section">
-                        <h3><i class="fas fa-user"></i> Personal Information</h3>
-                        <div class="form-group">
-                            <label for="name">Name:</label>
-                            <input type="text" class="form-control" id="name" name="name" value="{{ user.name }}" required placeholder="Your full name">
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" value="{{ user.email }}" required placeholder="Your email address">
-                        </div>
-                    </div>
-
-                    <div class="form-section">
                         <h3><i class="fas fa-id-card"></i> Professional Profile</h3>
                         <div class="form-group">
                             <label for="description">About Me:</label>
-                            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Tell us about yourself, your background, interests, and expertise...">{{ user.description }}</textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-section">
-                        <h3><i class="fas fa-shield-alt"></i> Security</h3>
-                        <div class="form-group">
-                            <label for="password">Change Password (leave empty to keep current password):</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter new password if you want to change it">
+                            <textarea class="form-control" id="description" name="description" rows="6" placeholder="Tell us about yourself, your background, interests, and expertise...">{{ user.description }}</textarea>
+                            <small class="form-text text-muted">This information will be visible to other users and project creators.</small>
                         </div>
                     </div>
                     

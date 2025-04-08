@@ -561,7 +561,7 @@
                         <a class="nav-link" href="{{ url_for('dashboard') }}">Dashboard</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url_for('projects') }}">Projects</a>
+                        <a class="nav-link" href="{{ url_for('projects_route') }}">Projects</a>
                     </li>
                     {% if user.is_admin %}
                     <li class="nav-item">
@@ -592,7 +592,7 @@
 
             <div id="createProjectForm" style="display: none;">
                 <h2><i class="fas fa-edit"></i> Create a New Project</h2>
-                <form action="{{ url_for('projects') }}" method="POST">
+                <form action="{{ url_for('projects_route') }}" method="POST">
                     <div class="form-group">
                         <label for="title">Project Title:</label>
                         <input type="text" class="form-control" id="title" name="title" required placeholder="Enter a catchy title for your project">
@@ -612,39 +612,44 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{ project.title }}</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">By {{ project.user.name }}</h6>
+                            <h6 class="card-subtitle mb-2 text-muted">By {{ project.user_name }}</h6>
                             <p class="card-text">{{ project.description }}</p>
                             <div class="mt-3">
-                            {% if project.user_id == user.id %}
-                                <form action="{{ url_for('projects') }}" method="POST" class="d-inline">
-                                    <input type="hidden" name="project_id" value="{{ project.id }}">
+                            {% if project.user_id|string == user._id|string %}
+                                <form action="{{ url_for('projects_route') }}" method="POST" class="d-inline">
+                                    <input type="hidden" name="project_id" value="{{ project._id }}">
                                     <button type="submit" class="btn btn-sm {% if project.published %}btn-warning{% else %}btn-success{% endif %}">
                                         {% if project.published %}<i class="fas fa-eye-slash"></i> Unpublish{% else %}<i class="fas fa-globe"></i> Publish{% endif %}
                                     </button>
                                 </form>
                             {% elif project.published %}
-                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#applyModal{{ project.id }}">
+                                <button type="button" class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#applyModal{{ project._id }}">
                                     <i class="fas fa-paper-plane"></i> Apply
                                 </button>
                                 <!-- Apply Modal -->
-                                <div class="modal fade" id="applyModal{{ project.id }}" tabindex="-1" aria-labelledby="applyModalLabel{{ project.id }}" aria-hidden="true">
+                                <div class="modal fade" id="applyModal{{ project._id }}" tabindex="-1" aria-labelledby="applyModalLabel{{ project._id }}" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="applyModalLabel{{ project.id }}"><i class="fas fa-paper-plane"></i> Apply to {{ project.title }}</h5>
+                                                <h5 class="modal-title" id="applyModalLabel{{ project._id }}"><i class="fas fa-paper-plane"></i> Apply to {{ project.title }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ url_for('projects') }}" method="POST">
+                                                <form action="{{ url_for('projects_route') }}" method="POST">
+                                                    <input type="hidden" name="apply_project_id" value="{{ project._id }}">
                                                     <div class="form-group">
                                                         <label for="application_message">Application Message:</label>
-                                                        <textarea class="form-control" id="application_message" name="application_message" rows="5" required placeholder="Explain why you're interested in this project and what skills you can bring that would make you a good fit..."></textarea>
+                                                        <textarea class="form-control" id="application_message" name="application_message" rows="5" required placeholder="Explain why you're interested in this project and what skills you can bring..."></textarea>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Application</button>
+                                                    <div class="mt-3">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                                                    </div>
                                                 </form>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Close</button>
+                                            <div class="modal-footer" style="display: none;">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn btn-primary">Submit Application</button>
                                             </div>
                                         </div>
                                     </div>
