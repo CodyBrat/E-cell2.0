@@ -125,52 +125,287 @@
         <div class="section-orb"></div>
       </div>
       <div class="container">
-        <h2>Our Vision <span class="vision-badge">SaaS Platform</span></h2>
+        <div class="vision-header">
+          <h2>Our Vision <span class="vision-badge">Incubation Platform</span></h2>
+        </div>
         
         <div class="vision-container">
           <div class="vision-intro reveal-text">
             <p>The Entrepreneurship Cell (E-Cell) at Newton School of Technology is building the next generation of <span class="highlight">startup infrastructure</span>. Our cloud-based platform seamlessly connects founders, investors, and talent in one unified ecosystem.</p>
           </div>
           
-          <div class="vision-features">
-            <div class="vision-feature reveal-text">
-              <div class="feature-icon">
-                <i class="fas fa-cloud"></i>
+          <style>
+            .vision-header {
+              position: relative;
+              margin-bottom: 40px;
+              text-align: center;
+            }
+            
+            .vision-header h2 {
+              font-size: 2.5rem;
+              margin-bottom: 15px;
+              background: linear-gradient(to right, #fff, rgba(100, 255, 218, 0.8));
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              display: inline-block;
+            }
+            
+            .vision-underline {
+              height: 3px;
+              width: 80px;
+              background: linear-gradient(to right, #64ffda, transparent);
+              margin: 0 auto;
+            }
+            
+            .vision-badge {
+              background: rgba(100, 255, 218, 0.1);
+              color: #64ffda;
+              font-size: 0.9rem;
+              padding: 5px 12px;
+              border-radius: 20px;
+              vertical-align: middle;
+              margin-left: 10px;
+              border: 1px solid rgba(100, 255, 218, 0.2);
+              font-weight: 400;
+              letter-spacing: 1px;
+              text-transform: uppercase;
+            }
+            
+            .vision-intro {
+              text-align: center;
+              max-width: 800px;
+              margin: 0 auto 40px;
+              font-size: 1.2rem;
+              line-height: 1.8;
+              color: rgba(255, 255, 255, 0.85);
+            }
+            
+            .vision-intro p {
+              animation: fadeIn 1s ease-out forwards;
+            }
+            
+            .vision-intro .highlight {
+              color: #64ffda;
+              font-weight: 600;
+              position: relative;
+            }
+            
+            .vision-intro .highlight::after {
+              content: '';
+              position: absolute;
+              bottom: -2px;
+              left: 0;
+              width: 100%;
+              height: 1px;
+              background: #64ffda;
+              opacity: 0.6;
+            }
+            
+            .features-container {
+              display: flex;
+              justify-content: center;
+              margin: 60px auto 40px;
+              gap: 30px;
+              width: 100%;
+              max-width: 1200px;
+            }
+            
+            .feature-card {
+              flex: 1;
+              background: rgba(0, 0, 0, 0.4);
+              border-radius: 16px;
+              padding: 40px 30px;
+              text-align: center;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              position: relative;
+              overflow: hidden;
+              transition: all 0.4s ease;
+              border: 1px solid rgba(100, 255, 218, 0.1);
+              max-width: 350px;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+              z-index: 1;
+              backdrop-filter: blur(10px);
+            }
+            
+            .feature-card::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(175deg, rgba(255, 255, 255, 0.05) 0%, rgba(0, 0, 0, 0) 40%);
+              z-index: -1;
+            }
+            
+            .feature-card:hover {
+              transform: translateY(-8px);
+              border-color: rgba(100, 255, 218, 0.3);
+              box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(100, 255, 218, 0.15);
+            }
+            
+            .feature-icon-container {
+              width: 70px;
+              height: 70px;
+              background: #64ffda;
+              border-radius: 50%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 25px;
+              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+              position: relative;
+              z-index: 2;
+            }
+            
+            .feature-icon-container::after {
+              content: '';
+              position: absolute;
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+              border: 1px solid rgba(100, 255, 218, 0.2);
+              z-index: -1;
+            }
+            
+            .feature-icon-container i {
+              font-size: 28px;
+              color: #000;
+            }
+            
+            .feature-title {
+              color: white;
+              font-size: 26px;
+              font-weight: 700;
+              margin-bottom: 15px;
+              font-family: 'Space Grotesk', sans-serif;
+            }
+            
+            .feature-description {
+              color: rgba(255, 255, 255, 0.7);
+              line-height: 1.6;
+              font-size: 16px;
+            }
+            
+            .vision-cta {
+              text-align: center;
+              margin-top: 30px;
+              padding: 30px;
+              background: rgba(0, 0, 0, 0.3);
+              border-radius: 16px;
+              border: 1px solid rgba(255, 255, 255, 0.05);
+              position: relative;
+              overflow: hidden;
+            }
+            
+            .vision-cta::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(to right, rgba(100, 255, 218, 0.03), transparent, rgba(100, 255, 218, 0.03));
+              z-index: -1;
+            }
+            
+            .vision-cta p {
+              font-size: 1.1rem;
+              margin-bottom: 25px;
+              color: rgba(255, 255, 255, 0.9);
+            }
+            
+            .vision-btn {
+              background: #64ffda;
+              color: #000;
+              border: none;
+              padding: 12px 28px;
+              font-size: 1rem;
+              font-weight: 600;
+              border-radius: 30px;
+              cursor: pointer;
+              display: inline-flex;
+              align-items: center;
+              gap: 10px;
+              transition: all 0.3s ease;
+              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            }
+            
+            .vision-btn:hover {
+              transform: translateY(-3px);
+              box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(100, 255, 218, 0.15);
+            }
+            
+            .vision-btn i {
+              transition: transform 0.3s ease;
+            }
+            
+            .vision-btn:hover i {
+              transform: translateX(5px);
+            }
+            
+            @media (max-width: 992px) {
+              .features-container {
+                flex-direction: column;
+                align-items: center;
+              }
+              
+              .feature-card {
+                width: 100%;
+                max-width: 450px;
+                margin-bottom: 25px;
+              }
+              
+              .vision-header h2 {
+                font-size: 2rem;
+              }
+            }
+          </style>
+          
+          <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              // Animate feature cards with staggered delay
+              const featureCards = document.querySelectorAll('.feature-card');
+              featureCards.forEach((card, index) => {
+                setTimeout(() => {
+                  card.style.opacity = '0';
+                  card.style.transform = 'translateY(30px)';
+                  
+                  setTimeout(() => {
+                    card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                  }, 100);
+                }, index * 200);
+              });
+            });
+          </script>
+          
+          <div class="features-container">
+            <div class="feature-card" style="opacity: 0; transform: translateY(30px);">
+              <div class="feature-icon-container">
+                <i class="fas fa-users"></i>
               </div>
-              <div class="feature-content">
-                <h3>Cloud-First Platform</h3>
-                <p>Scale your venture with our cloud infrastructure designed for rapid iteration and growth.</p>
-              </div>
+              <h3 class="feature-title">Find a CoFounder</h3>
+              <p class="feature-description">Find Your Perfect Partner Based On Interests, Skills And Location.</p>
             </div>
             
-            <div class="vision-feature reveal-text">
-              <div class="feature-icon">
-                <i class="fas fa-puzzle-piece"></i>
+            <div class="feature-card" style="opacity: 0; transform: translateY(30px);">
+              <div class="feature-icon-container">
+                <i class="fas fa-lightbulb"></i>
               </div>
-              <div class="feature-content">
-                <h3>Modular Solutions</h3>
-                <p>Choose from a suite of tools and resources tailored to your startup's unique needs.</p>
-              </div>
+              <h3 class="feature-title">Get the Right Advice</h3>
+              <p class="feature-description">Get Exclusive Access To Industry Leaders To Accelerate Your Growth</p>
             </div>
             
-            <div class="vision-feature reveal-text">
-              <div class="feature-icon">
-                <i class="fas fa-users-cog"></i>
+            <div class="feature-card" style="opacity: 0; transform: translateY(30px);">
+              <div class="feature-icon-container">
+                <i class="fas fa-dollar-sign"></i>
               </div>
-              <div class="feature-content">
-                <h3>Community-Driven</h3>
-                <p>Leverage our network of mentors, investors, and fellow entrepreneurs to accelerate your journey.</p>
-              </div>
-            </div>
-            
-            <div class="vision-feature reveal-text">
-              <div class="feature-icon">
-                <i class="fas fa-chart-bar"></i>
-              </div>
-              <div class="feature-content">
-                <h3>Data-Powered Insights</h3>
-                <p>Make informed decisions with analytics and market intelligence built into our platform.</p>
-              </div>
+              <h3 class="feature-title">Get Funded</h3>
+              <p class="feature-description">Prepare And Perfect Your Pitch To Get Your Business Funded Today!</p>
             </div>
           </div>
           
