@@ -18,7 +18,7 @@ app.secret_key = os.environ.get('SECRET_KEY', 'secret_key')  # Better to use env
 
 # MongoDB connection
 try:
-    client = MongoClient(uri)
+    client = MongoClient(uri, tlsAllowInvalidCertificates=True)
     # Ping the server to check connection
     client.admin.command('ping')
     print("Connected to MongoDB!")
@@ -240,7 +240,16 @@ def dashboard():
         return redirect('/login')
         
     has_description = bool(user.get('description'))
-    return render_template('dashboard.html', user=user, has_description=has_description)
+    
+    # Get user's projects and applications
+    user_projects = list(projects.find({'user_id': user['_id']}))
+    user_applications = list(applications.find({'user_id': user['_id']}))
+    
+    return render_template('dashboard.html', 
+                         user=user, 
+                         has_description=has_description,
+                         projects=user_projects,
+                         applications=user_applications)
 
 @app.route('/logout')
 def logout():
