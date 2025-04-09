@@ -32,8 +32,10 @@
             line-height: 1.6;
             position: relative;
             min-height: 100vh;
-            padding-bottom: 50px;
+            padding-bottom: 70px;
             overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
         body::before {
@@ -154,6 +156,7 @@
         }
 
         .main-content {
+            flex: 1;
             padding-top: var(--section-spacing);
         }
 
@@ -970,6 +973,34 @@
             color: var(--text-secondary);
             font-weight: 500;
         }
+
+        /* Footer styling */
+        .footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border);
+            padding: 15px 0;
+            position: relative;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .footer p {
+            color: var(--text-secondary);
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+        
+        .footer a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--accent-secondary);
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -1072,14 +1103,6 @@
                     <div class="stat-value">{{ projects|selectattr('user_id', 'equalto', user._id|string)|rejectattr('published', 'equalto', true)|list|length }}</div>
                     <div class="stat-label">Drafts</div>
                 </div>
-                
-                <div class="stat-card">
-                    <div class="stat-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="stat-value">{{ projects|selectattr('user_id', 'ne', user._id|string)|selectattr('published', 'equalto', true)|list|length }}</div>
-                    <div class="stat-label">Available Projects</div>
-                </div>
             </div>
 
             <div class="project-section">
@@ -1104,9 +1127,9 @@
                     </div>
                     <div class="empty-state-text">You haven't created any projects yet</div>
                     <div class="empty-state-subtext">Start creating projects to collaborate with other users. Once published, your projects will be visible to others who can apply to join.</div>
-                    <button id="emptyStateCreateBtn" class="empty-state-btn" title="Start creating your first project">
+                    <!-- <button id="emptyStateCreateBtn" class="empty-state-btn" title="Start creating your first project">
                         <i class="fas fa-plus-circle"></i> Create Your First Project
-                    </button>
+                    </button> -->
                 </div>
                 {% else %}
                     <div class="row">
@@ -1146,81 +1169,6 @@
                 {% endif %}
             </div>
 
-            <div class="section-divider"></div>
-
-            <div class="project-section">
-                <h3 class="section-title"><i class="fas fa-search"></i> Other Available Projects</h3>
-                
-                <div class="search-filter-container">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="availableProjectSearch" class="form-control" placeholder="Search available projects...">
-                    </div>
-                </div>
-                
-                {% if projects|selectattr('user_id', 'ne', user._id|string)|selectattr('published', 'equalto', true)|list|length == 0 %}
-                <div class="empty-state">
-                    <div class="empty-state-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <div class="empty-state-text">No projects available yet</div>
-                    <div class="empty-state-subtext">There are no published projects from other users available at the moment. Check back later or create your own project!</div>
-                    <a href="{{ url_for('dashboard') }}" class="empty-state-btn" title="Return to your dashboard">
-                        <i class="fas fa-arrow-left"></i> Back to Dashboard
-                    </a>
-                </div>
-                {% else %}
-                    <div class="row">
-                    {% for project in projects %}
-                        {% if project.user_id|string != user._id|string and project.published %}
-                        <div class="col-lg-6 mb-4">
-                            <div class="card h-100">
-                                <div class="card-body">
-                                    <h5 class="card-title"><i class="fas fa-project-diagram"></i> {{ project.title }}</h5>
-                                    <h6 class="card-subtitle mb-2">
-                                        <div class="user-avatar">{{ project.user_name[0] }}</div>
-                                        By {{ project.user_name }}
-                                    </h6>
-                                    <p class="card-text">{{ project.description }}</p>
-                                    <div class="card-actions">
-                                        <button type="button" class="btn-apply" data-bs-toggle="modal" data-bs-target="#applyModal{{ project._id }}" title="Apply to collaborate on this project">
-                                            <i class="fas fa-paper-plane"></i> Apply to Project
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Apply Modal -->
-                        <div class="modal fade" id="applyModal{{ project._id }}" tabindex="-1" aria-labelledby="applyModalLabel{{ project._id }}" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="applyModalLabel{{ project._id }}"><i class="fas fa-paper-plane"></i> Apply to {{ project.title }}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form action="{{ url_for('projects_route') }}" method="POST">
-                                            <input type="hidden" name="apply_project_id" value="{{ project._id }}">
-                                            <div class="form-group">
-                                                <label for="application_message">Why are you interested in this project?</label>
-                                                <textarea class="form-control" id="application_message" name="application_message" rows="5" required placeholder="Introduce yourself, explain your interest, and highlight the skills you can bring to this project..."></textarea>
-                                            </div>
-                                            <div class="d-flex justify-content-end gap-2 mt-4">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="fas fa-times"></i> Cancel</button>
-                                                <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Submit Application</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endif %}
-                    {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
-
             <div class="mt-4 mb-3">
                 <a href="{{ url_for('dashboard') }}" class="btn btn-secondary" title="Return to your dashboard"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
             </div>
@@ -1230,7 +1178,7 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container-fluid">
-            <p>© 2023 Shark's Sphere | E-Cell NST - <a href="#">Terms</a> - <a href="#">Privacy</a></p>
+            <p>© 2025 Shark's Sphere | E-Cell NST - <a href="{{ url_for('index') }}#terms">Terms</a> - <a href="{{ url_for('index') }}#privacy">Privacy</a></p>
         </div>
     </footer>
 
@@ -1289,23 +1237,6 @@
                     const myProjectCards = document.querySelectorAll('.project-section:first-of-type .card');
                     
                     myProjectCards.forEach(card => {
-                        const title = card.querySelector('.card-title').textContent.toLowerCase();
-                        const description = card.querySelector('.card-text').textContent.toLowerCase();
-                        const matches = title.includes(searchTerm) || description.includes(searchTerm);
-                        
-                        card.closest('.col-lg-6').style.display = matches ? 'block' : 'none';
-                    });
-                });
-            }
-            
-            // Search functionality for available projects
-            const availableProjectSearch = document.getElementById('availableProjectSearch');
-            if (availableProjectSearch) {
-                availableProjectSearch.addEventListener('input', function() {
-                    const searchTerm = this.value.toLowerCase();
-                    const availableProjectCards = document.querySelectorAll('.project-section:nth-of-type(3) .card');
-                    
-                    availableProjectCards.forEach(card => {
                         const title = card.querySelector('.card-title').textContent.toLowerCase();
                         const description = card.querySelector('.card-text').textContent.toLowerCase();
                         const matches = title.includes(searchTerm) || description.includes(searchTerm);

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Debug function to check visibility issues
 function debugVisibility() {
-  console.log('Debug: Checking visibility of key elements');
+  // Commented out debug logs to improve performance
   
   const keyElements = [
     'body', 
@@ -33,9 +33,9 @@ function debugVisibility() {
     const element = document.querySelector(selector);
     if (element) {
       const styles = window.getComputedStyle(element);
-      console.log(`${selector}: display=${styles.display}, visibility=${styles.visibility}, opacity=${styles.opacity}`);
+      // Debug logs removed
     } else {
-      console.log(`${selector}: Element not found`);
+      // Debug logs removed
     }
   });
 }
@@ -295,8 +295,6 @@ document.addEventListener('DOMContentLoaded', function() {
     pageContainer.style.visibility = 'visible';
     pageContainer.classList.remove('menuopen');
   }
-  
-  console.log('Visibility enforcement complete');
 });
 
 // Cursor glow effect

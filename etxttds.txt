@@ -1,2 +1,0 @@
-[{'_id': ObjectId('67f2ba689ab0f965c1b90279'), 'title': 'auhsdlkfhalksdj', 'description': 'dhklfahlkdhfkuahsdkbfjasdbjlfhbaldjbf', 'user_id': ObjectId('67f2ba559ab0f965c1b90278'), 'published': False},
-{'_id': ObjectId('67f2ba779ab0f965c1b9027a'), 'title': 'udkhakjhjkfasdkfjka', 'description': 'asdfasdfasdfad', 'user_id': ObjectId('67f2ba559ab0f965c1b90278'), 'published': False}]

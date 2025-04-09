@@ -154,7 +154,7 @@ def admin_required(f):
 
 @app.route('/')
 def index():
-    return render_template('indexq.html')
+    return render_template('index.html')
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -451,11 +451,11 @@ def serve_static(path):
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('indexq.html'), 404
+    return render_template('index.html'), 404
 
 @app.errorhandler(500)
 def server_error(e):
-    return render_template('indexq.html'), 500
+    return render_template('index.html'), 500
 
 if __name__ == '__main__':
     app.run(port=5500, debug=True)
