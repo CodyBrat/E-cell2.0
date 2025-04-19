@@ -28,11 +28,13 @@ try:
     users = db['users']
     projects = db['projects']
     applications = db['applications']
+    notifications = db['notifications']
 
     # Create indexes for unique fields and relationships
     users.create_index('email', unique=True)
     projects.create_index('user_id')
     applications.create_index([('project_id', 1), ('user_id', 1)])
+    notifications.create_index('user_id')
 except Exception as e:
     print(f"Error connecting to MongoDB: {e}")
     # Still initialize these variables to avoid NameError
@@ -141,6 +143,29 @@ def get_applications_by_project(project_id):
         print(f"Error fetching applications by project: {e}")
         return []
 
+# Helper functions for notification operations
+def create_notification(user_id, title, message, notification_type='info'):
+    try:
+        notification = {
+            'user_id': user_id,
+            'title': title,
+            'message': message,
+            'type': notification_type,
+            'read': False,
+            'created_at': datetime.utcnow()
+        }
+        return notifications.insert_one(notification).inserted_id
+    except Exception as e:
+        print(f"Error creating notification: {e}")
+        return None
+
+def get_user_notifications(user_id):
+    try:
+        return list(notifications.find({'user_id': user_id}).sort('created_at', -1))
+    except Exception as e:
+        print(f"Error fetching user notifications: {e}")
+        return []
+
 def admin_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -244,12 +269,14 @@ def dashboard():
     # Get user's projects and applications
     user_projects = list(projects.find({'user_id': user['_id']}))
     user_applications = list(applications.find({'user_id': user['_id']}))
+    user_notifications = get_user_notifications(user['_id'])
     
     return render_template('dashboard.html', 
                          user=user, 
                          has_description=has_description,
                          projects=user_projects,
-                         applications=user_applications)
+                         applications=user_applications,
+                         notifications=user_notifications)
 
 @app.route('/logout')
 def logout():
@@ -321,6 +348,15 @@ def projects_route():
                     else:
                         application_id = create_application(project_id_obj, user['_id'], message)
                         if application_id:
+                            # Create notification for project creator
+                            project_creator = get_user_by_id(project['user_id'])
+                            if project_creator:
+                                create_notification(
+                                    project_creator['_id'],
+                                    'New Project Application',
+                                    f'{user["name"]} has applied to your project "{project["title"]}"',
+                                    'application'
+                                )
                             flash('Application submitted successfully!', 'success')
                             return redirect(url_for('dashboard'))
                         else:
