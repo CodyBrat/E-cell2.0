@@ -322,6 +322,7 @@ def projects_route():
                         application_id = create_application(project_id_obj, user['_id'], message)
                         if application_id:
                             flash('Application submitted successfully!', 'success')
+                            return redirect(url_for('dashboard'))
                         else:
                             flash('Error submitting application', 'error')
             except Exception as e:
